@@ -25,17 +25,29 @@ class raildriver {
 	}
 
 	static send(data) {
-		debug('sending data: ' + JSON.stringify(data));
+		debug('sending data ' + JSON.stringify(data));
 		this.fs.writeFile(this.sendFile, this.encode(data), function (err) {
 			if (err) console.log(err);
 		});
 	}
 
 	static read() {
-		var content = this.fs.readFileSync(this.readFile);
-		let data = this.decode(content);
-		debug('receiving data: ' + JSON.stringify(data));
+		let data;
+		try {
+			let content = this.fs.readFileSync(this.readFile);
+			data = this.decode(content);
+		}
+		catch (e) {
+			if (e.code === 'ENOENT') {
+				this.fs.writeFile(this.readFile, '', function (err) {
+					if (err) console.log(err);
+					data = raildriver.read();
+				});
+			}
+		}
+		//debug('receiving data ' + JSON.stringify(data));
 		return data;
 	}
 }
+
 module.exports = raildriver;
