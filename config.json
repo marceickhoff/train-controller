@@ -1,0 +1,6 @@
+{
+	"tsInstallPath": "C:/Program Files (x86)/Steam/steamapps/common/RailWorks",
+	"tsPluginDir": "plugins",
+	"rdSendFile": "sendcommand.txt",
+	"rdGetFile": "GetData.txt"
+}

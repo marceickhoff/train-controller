@@ -5,6 +5,7 @@
  */
 
 var app = require('../app');
+var rd = require('../raildriver');
 var debug = require('debug')('train-controller:server');
 var http = require('http');
 
@@ -34,8 +35,18 @@ server.on('listening', onListening);
  */
 
 var io = require('socket.io')(server);
+
 io.on('connection', function(socket){
-  debug('Connection established (' + socket.id + ')');
+  debug('connection established (' + socket.id + ')');
+});
+
+io.on('send', function (data) {
+  rd.send(data);
+});
+
+console.log('WARNING: reading of ingame-data may be slow and/or delayed!'); //TODO: Probably need quicker polling time...
+rd.fs.watchFile(rd.readFile, function () {
+  io.emit('update', rd.read());
 });
 
 /**
@@ -95,5 +106,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Server listening on ' + bind);
+  debug('server listening on ' + bind);
 }
