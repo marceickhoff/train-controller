@@ -1,15 +1,15 @@
 # Train Controller
-This Node.js app allows you to control locomotives in Train Simulator 2019 using your tablet device as a remote. It utilizes the [​TS2017 Raildriver and Joystick Interface](http://forums.uktrainsim.com/viewtopic.php?f=361&t=139830&st=0&sk=t&sd=a#p1727411) by [CobraOne](http://forums.uktrainsim.com/memberlist.php?mode=viewprofile&sid=e8373e15e999669198eb2373eea8f3a6&u=282626) as an interface between the Node server and the TS2019 application.
+This Node.js app allows you to control locomotives in Train Simulator 2019 using your tablet or smartphone device as a remote. It utilizes the [TS4J Train Simulator Java Interface](https://github.com/marvk/ts4j) by [marvk](https://github.com/marvk) to allow communication between the Node server and the TS2019 application.
 
 *Work in progress.*
 
 ## Setup
-1. Download and install the [​TS2017 Raildriver and Joystick Interface](https://www.dropbox.com/sh/cbwyvjrt3x6gxat/AAB5WALzXgIqxADDO1ST-rBqa?dl=0)
+1. Download and build the [TS4J Train Simulator Java Interface](https://github.com/marvk/ts4j).
+2. Move the resulting ``.jar`` file into the Train Controller root directory.
 2. Run ``npm install``
-3. Open ``config.json`` and make sure the path to your Train Simulator 2019 installation under ``tsInstallPath`` is correct
+3. Open ``config.json`` and make sure the path to your Train Simulator 2019 installation and the name/location of the ``ts4j.jar`` is correct
 3. Run ``npm start``
-4. Go to [http://localhost:3000](http://localhost:3000) and choose a control panel
-5. Launch the *​TS2017 Raildriver and Joystick Interface* apllication and click the button "*Start Callback*"
+4. Go to [http://localhost:3000](http://localhost:3000)
 6. Launch Train Simulator 2019
 7. Control your train!
 
