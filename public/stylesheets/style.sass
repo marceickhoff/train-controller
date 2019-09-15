@@ -1,6 +1,19 @@
+$background-color: rgb(20,20,20)
+$foreground-color: rgb(255,255,255)
+
+*
+  box-sizing: border-box
+
 body
   padding: 50px
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font: 14px "PT Sans", Helvetica, Arial, sans-serif
+  background-color: $background-color
+  color: $foreground-color
+
+.container
+  background-color: lighten($background-color, 10%)
+  border: 2px outset lighten($background-color, 25%)
+  display: flex
 
 a
   color: #00B7FF
